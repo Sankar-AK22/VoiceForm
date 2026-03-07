@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🇮🇳 VoiceForm (Vani-Sahayak)
+# 🇮🇳 VoiceForm
 
 **Multilingual AI-Powered Application for Digital Form Creation via Voice Input.**
 
