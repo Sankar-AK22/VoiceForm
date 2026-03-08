@@ -86,14 +86,26 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               ],
             ),
           ),
-          IconButton(
-            icon: const Icon(Icons.notifications_outlined),
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('No new notifications')),
-              );
-            },
-            color: AppTheme.navyBlue,
+          Stack(
+            children: [
+              IconButton(
+                icon: const Icon(Icons.notifications_outlined),
+                onPressed: () => context.push('/notifications'),
+                color: AppTheme.navyBlue,
+              ),
+              Positioned(
+                right: 8,
+                top: 8,
+                child: Container(
+                  width: 10,
+                  height: 10,
+                  decoration: const BoxDecoration(
+                    color: Colors.red,
+                    shape: BoxShape.circle,
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),
@@ -106,66 +118,102 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Quick Actions',
-            style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-              color: AppTheme.navyBlue,
-            ),
-          ),
-          const SizedBox(height: 20),
           Row(
             children: [
               Expanded(
                 child: _buildQuickActionCard(
-                  icon: Icons.add_circle_outline,
-                  title: 'New Survey',
+                  icon: Icons.bar_chart_rounded,
+                  title: 'Live Analytics',
                   gradient: AppTheme.primaryGradient,
-                  onTap: () => context.push('/create-survey'),
+                  onTap: () => context.push('/analytics'),
                 ),
               ),
               const SizedBox(width: 16),
               Expanded(
                 child: _buildQuickActionCard(
-                  icon: Icons.camera_alt_outlined,
-                  title: 'Scan Form',
+                  icon: Icons.cloud_sync_rounded,
+                  title: 'Sync Engine',
                   gradient: AppTheme.secondaryGradient,
-                  onTap: () => context.push('/scan-form'),
+                  onTap: () => context.push('/sync-manager'),
+                ),
+              ),
+              const SizedBox(width: 16),
+              Expanded(
+                child: _buildQuickActionCard(
+                  icon: Icons.file_download_outlined,
+                  title: 'Export Data',
+                  gradient: LinearGradient(colors: [Colors.blue.shade400, Colors.blue.shade800]),
+                  onTap: () => context.push('/export'),
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 32),
+          const SizedBox(height: 24),
+          _buildVaniAiCard(),
+          const SizedBox(height: 24),
           const Text(
-            'Recent Activity',
+            'Recent Surveys',
             style: TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.bold,
               color: AppTheme.navyBlue,
             ),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 16),
           _buildActivityCard(
             title: 'Customer Feedback Survey',
-            subtitle: '12 responses • 2 hours ago',
+            subtitle: '12 responses • Live Syncing',
             icon: Icons.mic_rounded,
             color: AppTheme.saffron,
           ),
           const SizedBox(height: 12),
           _buildActivityCard(
             title: 'Product Review Form',
-            subtitle: '8 responses • 5 hours ago',
+            subtitle: '8 responses • Uploaded',
             icon: Icons.description_outlined,
             color: AppTheme.green,
           ),
-          const SizedBox(height: 12),
-          _buildActivityCard(
-            title: 'Employee Satisfaction',
-            subtitle: '25 responses • 1 day ago',
-            icon: Icons.people_outline,
-            color: AppTheme.navyBlue,
+        ],
+      ),
+    );
+  }
+
+  Widget _buildVaniAiCard() {
+    return GlassCard(
+      onTap: () => context.push('/vani-chat'),
+      padding: const EdgeInsets.all(24),
+      child: Row(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: const BoxDecoration(
+              gradient: AppTheme.accentGradient,
+              shape: BoxShape.circle,
+            ),
+            child: const Icon(Icons.auto_awesome, color: Colors.white, size: 32),
           ),
+          const SizedBox(width: 20),
+          const Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Talk to Vani AI',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: AppTheme.navyBlue,
+                  ),
+                ),
+                SizedBox(height: 4),
+                Text(
+                  'Your smart assistant is ready to help summarize responses.',
+                  style: TextStyle(fontSize: 12, color: Colors.grey),
+                ),
+              ],
+            ),
+          ),
+          const Icon(Icons.arrow_forward_ios_rounded, size: 16, color: AppTheme.saffron),
         ],
       ),
     );

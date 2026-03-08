@@ -15,6 +15,16 @@ import '../../features/survey/presentation/screens/pdf_preview_screen.dart';
 import '../../features/profile/presentation/screens/profile_screen.dart';
 import '../../features/history/presentation/screens/history_screen.dart';
 
+// Premium Features
+import '../../features/dashboard/presentation/screens/analytics_screen.dart';
+import '../../features/survey/presentation/screens/vani_chat_screen.dart';
+import '../../features/home/presentation/screens/sync_manager_screen.dart';
+import '../../features/profile/presentation/screens/security_settings_screen.dart';
+import '../../features/profile/presentation/screens/performance_metrics_screen.dart';
+import '../../features/dashboard/presentation/screens/data_export_screen.dart';
+import '../../features/profile/presentation/screens/collaborator_invite_screen.dart';
+import '../../features/home/presentation/screens/notification_center_screen.dart';
+
 final goRouterProvider = Provider<GoRouter>((ref) {
   return GoRouter(
     initialLocation: '/splash',
@@ -79,6 +89,39 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/history',
         builder: (context, state) => const HistoryScreen(),
+      ),
+      // Advanced Premium Screens
+      GoRoute(
+        path: '/analytics',
+        builder: (context, state) => const AnalyticsScreen(),
+      ),
+      GoRoute(
+        path: '/vani-chat',
+        builder: (context, state) => const VaniChatScreen(),
+      ),
+      GoRoute(
+        path: '/sync-manager',
+        builder: (context, state) => const SyncManagerScreen(),
+      ),
+      GoRoute(
+        path: '/security',
+        builder: (context, state) => const SecuritySettingsScreen(),
+      ),
+      GoRoute(
+        path: '/performance',
+        builder: (context, state) => const PerformanceMetricsScreen(),
+      ),
+      GoRoute(
+        path: '/export',
+        builder: (context, state) => const DataExportScreen(),
+      ),
+      GoRoute(
+        path: '/collaborators',
+        builder: (context, state) => const CollaboratorInviteScreen(),
+      ),
+      GoRoute(
+        path: '/notifications',
+        builder: (context, state) => const NotificationCenterScreen(),
       ),
     ],
   );

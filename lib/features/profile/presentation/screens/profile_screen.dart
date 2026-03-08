@@ -71,7 +71,29 @@ class ProfileScreen extends ConsumerWidget {
                 ),
               ),
               const SizedBox(height: 32),
-              // Settings Options
+              // Premium Options
+              _buildSettingItem(
+                icon: Icons.security_rounded,
+                title: 'Security & Biometrics',
+                subtitle: 'Manage Face ID & Passwords',
+                onTap: () => context.push('/security'),
+              ),
+              const SizedBox(height: 12),
+              _buildSettingItem(
+                icon: Icons.speed_rounded,
+                title: 'Performance Diagnostics',
+                subtitle: 'Monitor system health & CPU load',
+                onTap: () => context.push('/performance'),
+              ),
+              const SizedBox(height: 12),
+              _buildSettingItem(
+                icon: Icons.group_add_rounded,
+                title: 'Team Collaboration',
+                subtitle: 'Manage access and team members',
+                onTap: () => context.push('/collaborators'),
+              ),
+              const SizedBox(height: 32),
+              // Standard Options
               _buildSettingItem(
                 icon: Icons.language_rounded,
                 title: 'Language',
@@ -84,41 +106,19 @@ class ProfileScreen extends ConsumerWidget {
               ),
               const SizedBox(height: 12),
               _buildSettingItem(
-                icon: Icons.notifications_outlined,
-                title: 'Notifications',
-                subtitle: 'Enabled',
-                onTap: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Notifications are currently active')),
-                  );
-                },
-              ),
-              const SizedBox(height: 12),
-              _buildSettingItem(
                 icon: Icons.history_rounded,
                 title: 'Survey History',
-                subtitle: 'View all surveys',
+                subtitle: 'View all past surveys',
                 onTap: () => context.push('/history'),
               ),
               const SizedBox(height: 12),
               _buildSettingItem(
                 icon: Icons.help_outline_rounded,
                 title: 'Help & Support',
-                subtitle: 'Get assistance',
+                subtitle: 'Get assistance 24/7',
                 onTap: () {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(content: Text('Contact support@vanisahayak.com')),
-                  );
-                },
-              ),
-              const SizedBox(height: 12),
-              _buildSettingItem(
-                icon: Icons.info_outline_rounded,
-                title: 'About',
-                subtitle: 'Version 1.0.0',
-                onTap: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('VoiceForm v1.0.0 (Production Build)')),
                   );
                 },
               ),
